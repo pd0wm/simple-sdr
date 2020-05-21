@@ -101,9 +101,9 @@ int main(void)
   HAL_TIMEx_OCN_Start(&htim1, TIM_CHANNEL_2);
 
   HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_3);
+  __HAL_RCC_HSI_CALIBRATIONVALUE_ADJUST(13);
 
   /* USER CODE END 2 */
-  __HAL_RCC_HSI_CALIBRATIONVALUE_ADJUST(27);
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -234,9 +234,9 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 11;
+  htim1.Init.Prescaler = 22;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 3;
+  htim1.Init.Period = 1;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -270,7 +270,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  sConfigOC.Pulse = 3;
+  sConfigOC.Pulse = 1;
   if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
